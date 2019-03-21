@@ -182,7 +182,8 @@
       var decipher_iv, decipher_iv_len, result;
       if (this.method != null) {
         if (this.decipher == null) {
-          decipher_iv_len = this.get_cipher_len(this.method)[1];
+          console.log(this.method);
+          decipher_iv_len = (this.get_cipher_len(this.method) || [0])[1];
           decipher_iv = buf.slice(0, decipher_iv_len);
           this.decipher = this.get_cipher(this.key, this.method, 0, decipher_iv);
           result = this.decipher.update(buf.slice(decipher_iv_len));
