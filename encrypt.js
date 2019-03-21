@@ -20,7 +20,8 @@
     decrypt_table = new Array(256);
     md5sum = crypto.createHash("md5");
     md5sum.update(key);
-    hash = new Buffer(md5sum.digest(), "binary");
+    //hash = new Buffer(md5sum.digest(), "binary");
+    hash = Buffer.from(md5sum.digest(), "binary");
     al = hash.readUInt32LE(0);
     ah = hash.readUInt32LE(4);
     i = 0;
