@@ -141,7 +141,8 @@
       console.log('---------get_cipher---------', password, method, op, iv);
       var iv_, key, m, ref;
       method = method.toLowerCase();
-      password = new Buffer(password, 'binary');
+      //password = new Buffer(password, 'binary');
+      password = Buffer.alloc(password, 'binary');
       m = this.get_cipher_len(method);
       if (m != null) {
         ref = EVP_BytesToKey(password, m[0], m[1]), key = ref[0], iv_ = ref[1];
