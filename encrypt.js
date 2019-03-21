@@ -138,6 +138,7 @@
     };
 
     Encryptor.prototype.get_cipher = function(password, method, op, iv) {
+      console.log('---------get_cipher---------', password, method, op, iv);
       var iv_, key, m, ref;
       method = method.toLowerCase();
       password = new Buffer(password, 'binary');
@@ -182,7 +183,7 @@
       var decipher_iv, decipher_iv_len, result;
       if (this.method != null) {
         if (this.decipher == null) {
-          console.log('------------------', this.method, this.get_cipher_len(this.method));
+          console.log('---------decrypt---------', this.method, this.get_cipher_len(this.method));
           decipher_iv_len = (this.get_cipher_len(this.method) || [0])[1];
           decipher_iv = buf.slice(0, decipher_iv_len);
           this.decipher = this.get_cipher(this.key, this.method, 0, decipher_iv);
